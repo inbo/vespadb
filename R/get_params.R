@@ -3,11 +3,14 @@
 #' @param path The endpoint to get the parameters for, only GET endpoints are
 #'   supported.
 #' @param domain The domain to login to. Default is "uat" for the UAT environment.
+#' @param request_type The type of request to get the parameters for, either "get" or "post".
 #'
 #' @return A tibble with the parameters for the given path.
 #'
 #' @examples
+#' \dontrun{
 #' get_params()
+#' }
 get_params <- function(path = "observations",
                        request_type = "get",
                        domain = c("uat", "production")) {
