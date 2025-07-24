@@ -10,6 +10,7 @@
 #' @return The response object or the request object if return_request is TRUE.
 #'
 #' @examples
+#' \dontrun{
 #' # Fetch result from a URL
 #' fetch_result("https://uat-db.vespawatch.be/observations/30608")
 #'
@@ -19,7 +20,7 @@
 #' # Return request object instead of response
 #' fetch_result("https://uat-db.vespawatch.be/observations/30608",
 #'             return_request = TRUE)
-#'
+#'}
 fetch_result <- function(url,
                          .query_params = list(),
                          .auth = NULL,
@@ -34,7 +35,7 @@ fetch_result <- function(url,
       retry_on_failure = TRUE,
       max_tries = 4,
       backoff = ~ 1 # always wait one second for a failed request
-    ) %>% 
+    ) %>%
     httr2::req_throttle(capacity = 50,
                         fill_time_s = 60)
 

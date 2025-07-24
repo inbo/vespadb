@@ -13,8 +13,6 @@ login_vespadb(username, password, domain = c("uat", "production"))
 
 \item{domain}{The domain to login to. Default is "uat" for the UAT
 environment.}
-
-\item{verbose}{Whether to print the response from the API. Default is FALSE.}
 }
 \value{
 The path to an authentication cookie.

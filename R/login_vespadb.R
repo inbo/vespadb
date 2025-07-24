@@ -7,7 +7,6 @@
 #' @param password The password to login with
 #' @param domain The domain to login to. Default is "uat" for the UAT
 #'   environment.
-#' @param verbose Whether to print the response from the API. Default is FALSE.
 #'
 #' @return The path to an authentication cookie.
 #'

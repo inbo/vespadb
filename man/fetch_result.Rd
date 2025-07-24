@@ -25,6 +25,7 @@ Fetches the result from a given URL with optional query parameters and
 authentication.
 }
 \examples{
+\dontrun{
 # Fetch result from a URL
 fetch_result("https://uat-db.vespawatch.be/observations/30608")
 
@@ -34,5 +35,5 @@ fetch_result("https://uat-db.vespawatch.be/observations/",
 # Return request object instead of response
 fetch_result("https://uat-db.vespawatch.be/observations/30608",
             return_request = TRUE)
-
+}
 }
