@@ -6,6 +6,10 @@
 \usage{
 get_vespadb_export_s3(domain = c("uat", "production"))
 }
+\arguments{
+\item{domain}{The domain to query. Either "uat" for the testing instance, or
+"prod" for the production instance.}
+}
 \description{
 This fn also returns invisible obs
 }

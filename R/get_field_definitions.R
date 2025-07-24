@@ -12,8 +12,11 @@
 #' @return A tibble with the field definitions.
 #'
 #' @examples
+#' \dontrun{
 #' # complete field definitions
-#' get_field_definitions("prod")get_field_definitions()
+#' get_field_definitions("prod")
+#' get_field_definitions()
+#'}
 #'
 #' @importFrom magrittr %>%
 get_field_definitions <- function(domain = c("uat", "production"),

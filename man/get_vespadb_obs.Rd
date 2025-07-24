@@ -32,6 +32,7 @@ not allowed. For a more low level function to fetch results see
 \code{\link[=fetch_result]{fetch_result()}}.
 }
 \examples{
+\dontrun{
 # All public records
 get_vespadb_obs()
 
@@ -44,5 +45,6 @@ get_vespadb_obs(
   anb = "true",
   auth = login_vespadb()
 )
+}
 
 }

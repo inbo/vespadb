@@ -1,12 +1,15 @@
 #' This fn also returns invisible obs
+#'
+#' @param domain The domain to query. Either "uat" for the testing instance, or
+#'  "prod" for the production instance.
 
 get_vespadb_export_s3 <- function(domain = c("uat", "production")) {
-  
+
   api_url <- switch(rlang::arg_match(domain),
                     uat = "https://uat-db.vespawatch.be/observations/",
                     production = "https://db.vespawatch.be/observations/"
   )
-  
+
   httr2::request(api_url) |>
     httr2::req_url_path_append("export") |>
     httr2::req_perform() |>

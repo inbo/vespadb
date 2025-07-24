@@ -20,6 +20,7 @@
 #' @return A tibble with the observations from the VespaDB API.
 #'
 #' @examples
+#' \dontrun{
 #' # All public records
 #' get_vespadb_obs()
 #'
@@ -32,14 +33,15 @@
 #'   anb = "true",
 #'   auth = login_vespadb()
 #' )
+#'}
 #'
 #' @export
 get_vespadb_obs <- function(..., auth = NULL, domain = c("uat","production")) {
   # Set the api to query to either the UAT (testing) instance, or the production
   # instance
   api_url <- switch(rlang::arg_match(domain),
-    uat = "https://uat-db.vespawatch.be/observations/",
-    production = "https://db.vespawatch.be/observations/"
+                    uat = "https://uat-db.vespawatch.be/observations/",
+                    production = "https://db.vespawatch.be/observations/"
   )
 
   # Wrapped by advice from ?rlang::list2()
@@ -56,14 +58,14 @@ get_vespadb_obs <- function(..., auth = NULL, domain = c("uat","production")) {
   assertthat::assert_that(
     all(names(query_params) %in% expected_query_parameters),
     msg = glue::glue("All query parameters need to be supported by the API. \n",
-      "unsupported: {unsupported_parameters}",
-      unsupported_parameters =
-        glue::glue_collapse(
-          names(query_params)[!names(query_params) %in%
-            expected_query_parameters],
-          sep = ", ",
-          last = " & "
-        )
+                     "unsupported: {unsupported_parameters}",
+                     unsupported_parameters =
+                       glue::glue_collapse(
+                         names(query_params)[!names(query_params) %in%
+                                               expected_query_parameters],
+                         sep = ", ",
+                         last = " & "
+                       )
     )
   )
 
@@ -97,7 +99,7 @@ get_vespadb_obs <- function(..., auth = NULL, domain = c("uat","production")) {
     # Update the progress bar: increment with the returned number of records
     cli::cli_progress_update(force = FALSE,
                              inc = nrow(api_response$results)
-                             )
+    )
   }
 
   # Get the result objects out

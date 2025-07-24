@@ -22,7 +22,10 @@ This function retrieves the field definitions for the vespa-db Observations
 API schema
 }
 \examples{
+\dontrun{
 # complete field definitions
-get_field_definitions("prod")get_field_definitions()
+get_field_definitions("prod")
+get_field_definitions()
+}
 
 }
