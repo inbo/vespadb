@@ -32,6 +32,8 @@
 #'   anb = "true",
 #'   auth = login_vespadb()
 #' )
+#'
+#' @export
 get_vespadb_obs <- function(..., auth = NULL, domain = c("uat","production")) {
   # Set the api to query to either the UAT (testing) instance, or the production
   # instance
@@ -67,7 +69,7 @@ get_vespadb_obs <- function(..., auth = NULL, domain = c("uat","production")) {
 
   # Create the responses and perform them sequentially, parallel execution
   # doesn't allow for retries in httr2. Then parse as a tibble.
-  
+
   ## Use the cursor to avoid having to wait longer for high page numbers
   initial_return <- fetch_result(api_url,
                                  .query_params = query_params,
@@ -85,7 +87,7 @@ get_vespadb_obs <- function(..., auth = NULL, domain = c("uat","production")) {
                        is_transient = \(resp) {
                          # Also retry on bad gateway: seems to be transient.
                          httr2::resp_status(resp) %in% c(429, 500, 502, 503)}) %>%
-      httr2::req_perform() %>% 
+      httr2::req_perform() %>%
       httr2::resp_body_json(simplifyVector = TRUE)
     # Store the api_response
     api_out[[i]] <- api_response
@@ -97,7 +99,7 @@ get_vespadb_obs <- function(..., auth = NULL, domain = c("uat","production")) {
                              inc = nrow(api_response$results)
                              )
   }
-  
+
   # Get the result objects out
   purrr::map(api_out, purrr::chuck("results")) |>
     purrr::list_rbind() |>
