@@ -44,4 +44,5 @@ get_vespadb_obs(
   anb = "true",
   auth = login_vespadb()
 )
+
 }
