@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_vespadb_export_s3.R
 \name{get_vespadb_export_s3}
 \alias{get_vespadb_export_s3}
-\title{This fn also returns invisible obs}
+\title{get_vespadb_export_s3}
 \usage{
 get_vespadb_export_s3(domain = c("uat", "production"))
 }
@@ -10,6 +10,25 @@ get_vespadb_export_s3(domain = c("uat", "production"))
 \item{domain}{The domain to query. Either "uat" for the testing instance, or
 "prod" for the production instance.}
 }
+\value{
+A tibble with the observations from the VespaDB API export.
+}
 \description{
-This fn also returns invisible obs
+This fn also returns invisible observations from the VespaDB API export.
+}
+\details{
+Daily around 4 AM a export is created from the VespaDB API and stored in S3.
+This function retrieves the latest export from S3 and returns it as a tibble.
+
+This function is useful for getting a snapshot of the data in the VespaDB API
+at a specific point in time, or for getting a large amount of data.
+}
+\examples{
+\dontrun{
+# Get the latest export from the VespaDB API
+get_vespadb_export_s3()
+# Get the latest export from the VespaDB API in the production instance
+get_vespadb_export_s3(domain = "production")
+}
+
 }

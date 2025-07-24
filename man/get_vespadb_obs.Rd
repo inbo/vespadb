@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_vespadb_obs.R
 \name{get_vespadb_obs}
 \alias{get_vespadb_obs}
-\title{Query the vespa-db api to get observations}
+\title{get_vespadb_obs}
 \usage{
 get_vespadb_obs(..., auth = NULL, domain = c("uat", "production"))
 }
@@ -22,11 +22,13 @@ environment.}
 A tibble with the observations from the VespaDB API.
 }
 \description{
+Query the vespa-db api to get observations
+}
+\details{
 Extra query parameters are supported according to the Observation model. More
 information on the allowed parameters can be fetched via
 \code{\link[=get_field_definitions]{get_field_definitions()}}.
-}
-\details{
+
 This function already handles paging, so supplying a page as a parameter is
 not allowed. For a more low level function to fetch results see
 \code{\link[=fetch_result]{fetch_result()}}.
