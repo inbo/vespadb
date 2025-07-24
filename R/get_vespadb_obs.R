@@ -1,3 +1,5 @@
+#' get_vespadb_obs
+#'
 #' Query the vespa-db api to get observations
 #'
 #' Extra query parameters are supported according to the Observation model. More

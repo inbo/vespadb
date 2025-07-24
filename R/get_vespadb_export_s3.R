@@ -1,7 +1,27 @@
-#' This fn also returns invisible obs
+#' get_vespadb_export_s3
+#'
+#' This fn also returns invisible observations from the VespaDB API export.
+#'
+#' Daily around 4 AM a export is created from the VespaDB API and stored in S3.
+#' This function retrieves the latest export from S3 and returns it as a tibble.
+#'
+#' This function is useful for getting a snapshot of the data in the VespaDB API
+#' at a specific point in time, or for getting a large amount of data.
 #'
 #' @param domain The domain to query. Either "uat" for the testing instance, or
 #'  "prod" for the production instance.
+#'
+#' @return A tibble with the observations from the VespaDB API export.
+#'
+#' @examples
+#' \dontrun{
+#' # Get the latest export from the VespaDB API
+#' get_vespadb_export_s3()
+#' # Get the latest export from the VespaDB API in the production instance
+#' get_vespadb_export_s3(domain = "production")
+#' }
+#'
+#' @export
 
 get_vespadb_export_s3 <- function(domain = c("uat", "production")) {
 
