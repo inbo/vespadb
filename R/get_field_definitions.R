@@ -21,6 +21,10 @@
 #' @importFrom magrittr %>%
 get_field_definitions <- function(domain = c("uat", "production"),
                                   check_required = TRUE){
+
+  # set global variable to avoid R CMD check warning
+  . <- enum <- field <- type <- NULL
+
   # Set the api to query to either the UAT (testing) instance, or the production
   # instance
   api_url <- ifelse(domain == rlang::arg_match(domain),
