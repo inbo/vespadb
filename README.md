@@ -1,5 +1,12 @@
 # vespadb-importR A package to access the public vespa-db api using R.
 
+<!-- badges: start -->
+
+[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![R-CMD-check](https://github.com/inbo/vespadbImportR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/inbo/vespadbImportR/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/inbo/vespadbImportR/graph/badge.svg)](https://app.codecov.io/gh/inbo/vespadbImportR)
+<!-- badges: end -->
+
 ## What is vespa-db
 
 vespa-db is a database created by [vespawatch](https://vespawatch.be/en/) to make *Vespa velutina* **nest** observations available in as near as real time as possible.
@@ -19,7 +26,8 @@ Later on a need arose to query the vespa-db api again, and the original code was
 ## Installation
 
 You can install the development version directly from Github:
-```r
+
+``` r
 # install.packages("devtools")
 devtools::install_github("inbo/vespadbImportR")
 ```
