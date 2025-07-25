@@ -31,7 +31,7 @@ municipalities <- function(municipalities = NULL,
 
   if (is.null(municipalities)) {
     dplyr::relocate(municipalities_overview,
-      municipality = .data$name,
+      municipality = dplyr::all_of("name"),
       .before = "id"
     ) %>%
       dplyr::as_tibble() # for pretty printing
