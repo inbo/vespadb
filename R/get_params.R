@@ -10,7 +10,7 @@
 #' @examples
 #' \dontrun{
 #' get_params()
-#' }
+#' @export
 get_params <- function(path = "observations",
                        request_type = "get",
                        domain = c("uat", "production")) {
