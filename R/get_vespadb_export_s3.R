@@ -23,7 +23,7 @@
 #'
 #' @export
 
-get_vespadb_export_s3 <- function(domain = c("uat", "production")) {
+get_vespadb_export_s3 <- function(domain = c("production", "uat")) {
 
   api_url <- switch(rlang::arg_match(domain),
                     uat = "https://uat-db.vespawatch.be/observations/",
