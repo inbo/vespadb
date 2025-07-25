@@ -38,7 +38,7 @@
 #'}
 #'
 #' @export
-get_vespadb_obs <- function(..., auth = NULL, domain = c(""production", "uat")) {
+get_vespadb_obs <- function(..., auth = NULL, domain = c("production", "uat")) {
   # Set the api to query to either the UAT (testing) instance, or the production
   # instance
   api_url <- switch(rlang::arg_match(domain),
