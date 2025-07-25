@@ -10,6 +10,8 @@ Authors@R: c(
 Description: Read data from the vespa-db database hosted at
     https://nesten.vespawatch.be.
 License: MIT + file LICENSE
+Depends: 
+    R (>= 4.0.0)
 Imports: 
     askpass,
     assertthat,
