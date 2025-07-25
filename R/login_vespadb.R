@@ -16,17 +16,22 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_vespadb_obs(municipality = 215,
-#'                           auth = login_vespadb("username",
-#'                                                "password"))
+#' get_vespadb_obs(
+#'   municipality = 215,
+#'   auth = login_vespadb(
+#'     "username",
+#'     "password"
+#'   )
+#' )
 #' }
 #' @export
-login_vespadb <- function(username, password, domain = c("production", "uat")){
+login_vespadb <- function(username, password, domain = c("production", "uat")) {
   api_url <- switch(rlang::arg_match(domain),
-                    uat = "https://uat-db.vespawatch.be/login/",
-                    production = "https://db.vespawatch.be/login/")
+    uat = "https://uat-db.vespawatch.be/login/",
+    production = "https://db.vespawatch.be/login/"
+  )
 
-  if(missing(username)) {
+  if (missing(username)) {
     if (Sys.getenv("VESPADB_USER") != "") {
       username <- Sys.getenv("VESPADB_USER")
       cli::cli_alert_info("Found credentials for {username}")
@@ -35,7 +40,7 @@ login_vespadb <- function(username, password, domain = c("production", "uat")){
     }
   }
 
-  if(missing(password)){
+  if (missing(password)) {
     if (Sys.getenv("VESPADB_PWD") != "") {
       password <- Sys.getenv("VESPADB_PWD")
     } else {
@@ -50,15 +55,20 @@ login_vespadb <- function(username, password, domain = c("production", "uat")){
   path_to_cookie <- tempfile()
 
   # Perform login POST request
-  response <-
+  request <-
     httr2::request(api_url) %>%
     httr2::req_method("POST") %>%
     httr2::req_body_json(list(username = username, password = password)) %>%
-    httr2::req_retry() %>%
-    httr2::req_cookie_preserve(path = path_to_cookie) %>%
-    httr2::req_perform()
+    httr2::req_retry(max_tries = 3) %>%
+    httr2::req_cookie_preserve(path = path_to_cookie)
 
-
+  tryCatch(
+    response <- httr2::req_perform(request),
+    httr2_http_400 = function(cnd) {
+      rlang::abort("Invalid username or password. Please try again.",
+                   call = rlang::env_parent(n = 1))
+    }
+  )
 
   # Return error if login wasn't successful
   httr2::resp_check_status(response)
