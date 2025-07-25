@@ -1,8 +1,10 @@
 test_that("get_observation_parameters() returns a tibble", {
+  skip_if_offline("db.vespawatch.be")
   expect_s3_class(get_observation_parameters(), "tbl_df")
 })
 
 test_that("get_observation_parameters() returns the expected fields", {
+  skip_if_offline("db.vespawatch.be")
   expected_fields <- c(
     "name",
     "in",
