@@ -5,7 +5,7 @@
 #' that can be used in the query.
 #'
 #' @inheritParams get_params
-#' @param ...
+#' @param ... Additional parameters to internal methods.
 #'
 #' @return A tibble with the parameters that can be used in the
 #' [get_vespadb_obs()] function.

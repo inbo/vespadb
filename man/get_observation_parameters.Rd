@@ -10,7 +10,7 @@ get_observation_parameters(domain = c("production", "uat"), ...)
 \item{domain}{The domain to login to. Default is "uat" for the UAT
 environment.}
 
-\item{...}{}
+\item{...}{Additional parameters to internal methods.}
 }
 \value{
 A tibble with the parameters that can be used in the
