@@ -4,7 +4,7 @@
 \alias{get_vespadb_obs}
 \title{get_vespadb_obs}
 \usage{
-get_vespadb_obs(..., auth = NULL, domain = c("uat", "production"))
+get_vespadb_obs(..., auth = NULL, domain = c("production", "uat"))
 }
 \arguments{
 \item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> Query parameters according to
