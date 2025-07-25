@@ -42,6 +42,7 @@ municipalities <- function(municipalities = NULL,
     ))
 
     dplyr::filter(municipalities_overview, .data$name %in% municipalities) %>%
-      dplyr::pull("id")
+      dplyr::pull("id") %>%
+      as.integer()
   }
 }
