@@ -54,35 +54,61 @@ You can install the development version of vespadbImportR from
 pak::pak("inbo/vespadbImportR")
 ```
 
-## Example
+## Examples
 
-This is a basic example which shows you how to solve a common problem:
+There are two options to get data out of vespa-db. The fastest way is to
+fetch the most recent export file. This file is generated every day at
+around 4AM Brussels time.
 
 ``` r
 library(vespadbImportR)
-## basic example code
+get_vespadb_export_s3()
+#> Warning: One or more parsing issues, call `problems()` on your data frame for details,
+#> e.g.:
+#>   dat <- vroom(...)
+#>   problems(dat)
+#> # A tibble: 22,653 × 27
+#>       id observation_datetime latitude longitude province     municipality anb  
+#>    <dbl> <dttm>                  <dbl>     <dbl> <chr>        <chr>        <lgl>
+#>  1 14861 2025-04-11 10:59:00      51.0      3.38 West-Vlaand… Wingene      FALSE
+#>  2 14862 2025-04-11 00:00:00      51.1      4.62 Antwerpen    Nijlen       FALSE
+#>  3 14863 2025-04-11 11:14:00      51.2      4.43 Antwerpen    Antwerpen    FALSE
+#>  4 14865 2025-04-10 13:57:00      50.9      2.90 West-Vlaand… Ieper        FALSE
+#>  5 14866 2025-04-10 00:00:00      51.2      3.20 West-Vlaand… Brugge       FALSE
+#>  6 14867 2025-04-10 20:29:00      50.8      4.92 Vlaams Brab… Tienen       FALSE
+#>  7 14868 2025-04-10 20:01:00      51.1      3.56 Oost-Vlaand… Lievegem     FALSE
+#>  8 14869 2025-04-10 18:53:00      50.9      5.38 Limburg      Hasselt      FALSE
+#>  9 14870 2025-04-10 17:40:00      51.1      4.46 Antwerpen    Kontich      FALSE
+#> 10 14871 2025-04-10 16:07:00      50.9      4.36 Vlaams Brab… Grimbergen   FALSE
+#> # ℹ 22,643 more rows
+#> # ℹ 20 more variables: nest_status <chr>, eradication_date <date>,
+#> #   eradication_result <chr>, images <chr>, nest_type <chr>,
+#> #   nest_location <chr>, nest_height <chr>, nest_size <chr>,
+#> #   queen_present <lgl>, moth_present <lgl>, duplicate_nest <lgl>,
+#> #   other_species_nest <lgl>, notes <lgl>, source <chr>, source_id <dbl>,
+#> #   wn_id <dbl>, wn_validation_status <chr>, wn_cluster_id <dbl>, …
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Alternativly you can also send queries to the database direclty and get
+live data back. This is much slower.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+get_vespadb_obs(
+  municipality_id = 201,
+  min_observation_datetime = "2025-07-01T00:00:00"
+)
+#> # A tibble: 4 × 30
+#>      id created_datetime    modified_datetime   location$type source   source_id
+#>   <int> <chr>               <chr>               <chr>         <chr>    <lgl>    
+#> 1 40568 2025-07-06T02:00:06 2025-07-07T08:14:14 Point         Waarnem… NA       
+#> 2 40937 2025-07-09T02:00:05 2025-07-18T01:30:00 Point         Waarnem… NA       
+#> 3 41113 2025-07-11T02:00:04 2025-07-11T02:00:08 Point         Waarnem… NA       
+#> 4 42445 2025-07-23T02:00:14 2025-07-23T02:00:17 Point         Waarnem… NA       
+#> # ℹ 25 more variables: location$coordinates <list>, nest_height <chr>,
+#> #   nest_size <chr>, nest_location <chr>, nest_type <chr>,
+#> #   observation_datetime <chr>, eradication_date <chr>, municipality <int>,
+#> #   queen_present <lgl>, moth_present <lgl>, province <int>, images <list>,
+#> #   municipality_name <chr>, notes <lgl>, eradication_result <chr>,
+#> #   wn_id <int>, wn_validation_status <chr>, anb <lgl>, visible <lgl>,
+#> #   wn_cluster_id <lgl>, nest_status <chr>, duplicate_nest <lgl>, …
 ```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.

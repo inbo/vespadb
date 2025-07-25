@@ -54,3 +54,13 @@ There are two options to get data out of vespa-db. The fastest way is to fetch t
 library(vespadbImportR)
 get_vespadb_export_s3()
 ```
+
+Alternativly you can also send queries to the database direclty and get live data back. This is much slower. 
+
+```{r database query}
+get_vespadb_obs(
+  municipality_id = 201,
+  min_observation_datetime = "2025-07-01T00:00:00"
+)
+```
+
