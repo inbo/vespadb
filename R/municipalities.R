@@ -6,6 +6,7 @@
 #' @param municipalities (Optional) A character vector of municipality names. If
 #'   this is not provided, all municipalities will be returned as a tibble with
 #'   their ids.
+#' @inheritParams get_vespadb_obs
 #'
 #' @return Either a numeric vector of ids, or if no argument is passed, a tibble
 #'   with all municipalities and their id.
@@ -30,7 +31,7 @@ municipalities <- function(municipalities = NULL,
 
   if (is.null(municipalities)) {
     dplyr::relocate(municipalities_overview,
-      municipality = name,
+      municipality = .data$name,
       .before = "id"
     ) %>%
       dplyr::as_tibble() # for pretty printing
@@ -41,6 +42,6 @@ municipalities <- function(municipalities = NULL,
     ))
 
     dplyr::filter(municipalities_overview, .data$name %in% municipalities) %>%
-      dplyr::pull(id)
+      dplyr::pull("id")
   }
 }

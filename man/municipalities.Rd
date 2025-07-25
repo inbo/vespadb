@@ -10,6 +10,9 @@ municipalities(municipalities = NULL, domain = c("production", "uat"))
 \item{municipalities}{(Optional) A character vector of municipality names. If
 this is not provided, all municipalities will be returned as a tibble with
 their ids.}
+
+\item{domain}{Character. The domain to login to. Default is "uat" for the UAT
+environment.}
 }
 \value{
 Either a numeric vector of ids, or if no argument is passed, a tibble
