@@ -7,7 +7,7 @@ Authors@R: c(
   person("Sander", "Devisscher", email = "sander.devisscher@inbo.be", role = "aut",
            comment = c(ORCID = "0000-0003-2015-5731", affiliation = "Research Institute for Nature and Forest (INBO)"))
   )
-Description: Read data from the vespa-db database hosted at https://nesten.vespawatch.be
+Description: Read data from the vespa-db database hosted at https://nesten.vespawatch.be.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
