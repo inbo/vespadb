@@ -4,14 +4,18 @@
 \alias{login_vespadb}
 \title{Login to VespaDB API to fetch fields that are not publicly available}
 \usage{
-login_vespadb(username, password, domain = c("uat", "production"))
+login_vespadb(username, password, domain = c("production", "uat"))
 }
 \arguments{
-\item{username}{The username to login with}
+\item{username}{The username to login with, if not provided it will
+be read from the environment variable \code{VESPADB_USER}. If that is not set,
+you will be prompted to enter their username.}
 
-\item{password}{The password to login with}
+\item{password}{The password to login with, if not provided it will
+be read from the environment variable \code{VESPADB_PWD}. If that is not set,
+you will be prompted to enter their password.}
 
-\item{domain}{The domain to login to. Default is "uat" for the UAT
+\item{domain}{The domain to login to. Default is "production" for the UAT
 environment.}
 }
 \value{

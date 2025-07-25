@@ -3,9 +3,13 @@
 #' This function allows you to login to the API and returns the required
 #' csrftoken needed to fetch information that is not publicly available.
 #'
-#' @param username The username to login with
-#' @param password The password to login with
-#' @param domain The domain to login to. Default is "uat" for the UAT
+#' @param username The username to login with, if not provided it will
+#'  be read from the environment variable `VESPADB_USER`. If that is not set,
+#'  you will be prompted to enter their username.
+#' @param password The password to login with, if not provided it will
+#' be read from the environment variable `VESPADB_PWD`. If that is not set,
+#' you will be prompted to enter their password.
+#' @param domain The domain to login to. Default is "production" for the UAT
 #'   environment.
 #'
 #' @return The path to an authentication cookie.
@@ -16,7 +20,8 @@
 #'                           auth = login_vespadb("username",
 #'                                                "password"))
 #' }
-login_vespadb <- function(username, password, domain = c("uat", "production")){
+#' @export
+login_vespadb <- function(username, password, domain = c("production", "uat")){
   api_url <- switch(rlang::arg_match(domain),
                     uat = "https://uat-db.vespawatch.be/login/",
                     production = "https://db.vespawatch.be/login/")
