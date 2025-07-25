@@ -1,0 +1,23 @@
+---
+title: "vespa-db Field Definitions"
+author: Pieter Huybrechts
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{vespadb_fields}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+There are more fields in the vespa-db database than are returned by the API. This page provides a complete overview of all fields in the database.
+
+```{r, echo=FALSE, eval=TRUE}
+knitr::kable(vespadbImportR:::get_field_definitions())
+```
+
