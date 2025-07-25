@@ -60,7 +60,7 @@ login_vespadb <- function(username, password, domain = c("production", "uat")){
 
 
 
-  # Return error if login wasn't succesful
+  # Return error if login wasn't successful
   httr2::resp_check_status(response)
 
   invisible(path_to_cookie)
