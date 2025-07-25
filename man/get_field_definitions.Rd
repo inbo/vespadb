@@ -4,28 +4,27 @@
 \alias{get_field_definitions}
 \title{Get field definitions}
 \usage{
-get_field_definitions(domain = c("uat", "production"), check_required = TRUE)
+get_field_definitions(domain = c("production", "uat"), check_required = TRUE)
 }
 \arguments{
 \item{domain}{The domain to query. Either "uat" for the testing instance, or
 "prod" for the production instance.}
 
 \item{check_required}{Logical indicating whether to check if any fields are
-required. If no required fields are in the definition a warning is
-returned.}
+required. If no required fields are in the definition a warning is returned.}
 }
 \value{
 A tibble with the field definitions.
 }
 \description{
 This function retrieves the field definitions for the vespa-db Observations
-API schema
+API schema. This is an overview of the information we have for every record.
+Not all columns that are in this table are returned in the API endpoints.
 }
 \examples{
 \dontrun{
 # complete field definitions
-get_field_definitions("prod")
-get_field_definitions()
+get_field_definitions("production")
 }
 
 }

@@ -1,19 +1,23 @@
 #' Get parameters for a given path in the vespa-db openAPI docs
 #'
+#' This function will return you the allowed parameters for a given API call. By
+#' default it will return all fields allowed in a [get_vespadb_obs()] query.
+#'
 #' @param path The endpoint to get the parameters for, only GET endpoints are
 #'   supported.
-#' @param domain The domain to login to. Default is "uat" for the UAT environment.
-#' @param request_type The type of request to get the parameters for, either "get" or "post".
+#' @param domain The domain to login to. Default is "uat" for the UAT
+#'   environment.
+#' @param request_type The type of request to get the parameters for, either
+#'   "get" or "post".
 #'
 #' @return A tibble with the parameters for the given path.
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf interactive()
 #' get_params()
 #' @export
 get_params <- function(path = "observations",
                        request_type = "get",
-                       domain = c("uat", "production")) {
+                       domain = c("production", "uat")) {
   api_url <- switch(rlang::arg_match(domain),
     uat = "https://uat-db.vespawatch.be/swagger/?format=openapi",
     production = "https://db.vespawatch.be/swagger/?format=openapi"

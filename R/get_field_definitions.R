@@ -1,24 +1,23 @@
-#' Get field definitions
+#'Get field definitions
 #'
-#' This function retrieves the field definitions for the vespa-db Observations
-#' API schema
+#'This function retrieves the field definitions for the vespa-db Observations
+#'API schema. This is an overview of the information we have for every record.
+#'Not all columns that are in this table are returned in the API endpoints.
 #'
-#' @param domain The domain to query. Either "uat" for the testing instance, or
-#'   "prod" for the production instance.
-#' @param check_required Logical indicating whether to check if any fields are
-#'   required. If no required fields are in the definition a warning is
-#'   returned.
+#'@param domain The domain to query. Either "uat" for the testing instance, or
+#'  "prod" for the production instance.
+#'@param check_required Logical indicating whether to check if any fields are
+#'  required. If no required fields are in the definition a warning is returned.
 #'
-#' @return A tibble with the field definitions.
+#'@return A tibble with the field definitions.
 #'
 #' @examples
 #' \dontrun{
 #' # complete field definitions
-#' get_field_definitions("prod")
-#' get_field_definitions()
+#' get_field_definitions("production")
 #'}
 #'
-#' @importFrom magrittr %>%
+#'@importFrom magrittr %>%
 get_field_definitions <- function(domain = c("production", "uat"),
                                   check_required = TRUE){
 

@@ -7,25 +7,28 @@
 get_params(
   path = "observations",
   request_type = "get",
-  domain = c("uat", "production")
+  domain = c("production", "uat")
 )
 }
 \arguments{
 \item{path}{The endpoint to get the parameters for, only GET endpoints are
 supported.}
 
-\item{request_type}{The type of request to get the parameters for, either "get" or "post".}
+\item{request_type}{The type of request to get the parameters for, either
+"get" or "post".}
 
-\item{domain}{The domain to login to. Default is "uat" for the UAT environment.}
+\item{domain}{The domain to login to. Default is "uat" for the UAT
+environment.}
 }
 \value{
 A tibble with the parameters for the given path.
 }
 \description{
-Get parameters for a given path in the vespa-db openAPI docs
+This function will return you the allowed parameters for a given API call. By
+default it will return all fields allowed in a \code{\link[=get_vespadb_obs]{get_vespadb_obs()}} query.
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 get_params()
-}
+\dontshow{\}) # examplesIf}
 }
