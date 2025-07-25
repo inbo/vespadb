@@ -19,7 +19,7 @@
 #'}
 #'
 #' @importFrom magrittr %>%
-get_field_definitions <- function(domain = c("uat", "production"),
+get_field_definitions <- function(domain = c("production", "uat"),
                                   check_required = TRUE){
 
   # set global variable to avoid R CMD check warning
@@ -27,9 +27,9 @@ get_field_definitions <- function(domain = c("uat", "production"),
 
   # Set the api to query to either the UAT (testing) instance, or the production
   # instance
-  api_url <- ifelse(domain == rlang::arg_match(domain),
-                    yes = "https://uat-db.vespawatch.be/swagger/?format=openapi",
-                    no = "https://db.vespawatch.be/swagger/?format=openapi")
+  api_url <- switch(rlang::arg_match(domain),
+                    uat = "https://uat-db.vespawatch.be/swagger/?format=openapi",
+                    production = "https://db.vespawatch.be/swagger/?format=openapi")
 
   ## Fetch Observation Definitions
   ### httr2 to enable retries and response caching
