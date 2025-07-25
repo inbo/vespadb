@@ -44,6 +44,11 @@ private repository: inbo/vespaR.
 Later on a need arose to query the vespa-db api again, and the original
 code was moved here for more broad reuse.
 
+## The API
+
+For an overview of all available API endpoints (certainly more than are
+wrapped here), see: <https://db.vespawatch.be/swagger/>.
+
 ## Installation
 
 You can install the development version of vespadbImportR from
@@ -94,21 +99,86 @@ live data back. This is much slower.
 
 ``` r
 get_vespadb_obs(
-  municipality_id = 201,
-  min_observation_datetime = "2025-07-01T00:00:00"
+  municipality_id = 32,
+  min_observation_datetime = "2025-07-01T00:00:00",
+  max_observation_datetime = "2025-07-25T00:00:00"
 )
-#> # A tibble: 4 × 30
-#>      id created_datetime    modified_datetime   location$type source   source_id
-#>   <int> <chr>               <chr>               <chr>         <chr>    <lgl>    
-#> 1 40568 2025-07-06T02:00:06 2025-07-07T08:14:14 Point         Waarnem… NA       
-#> 2 40937 2025-07-09T02:00:05 2025-07-18T01:30:00 Point         Waarnem… NA       
-#> 3 41113 2025-07-11T02:00:04 2025-07-11T02:00:08 Point         Waarnem… NA       
-#> 4 42445 2025-07-23T02:00:14 2025-07-23T02:00:17 Point         Waarnem… NA       
+#> # A tibble: 34 × 30
+#>       id created_datetime    modified_datetime   location$type source  source_id
+#>    <int> <chr>               <chr>               <chr>         <chr>   <lgl>    
+#>  1 40399 2025-07-03T04:00:31 2025-07-03T04:00:34 Point         Waarne… NA       
+#>  2 40466 2025-07-04T04:00:05 2025-07-04T04:00:10 Point         Waarne… NA       
+#>  3 40881 2025-07-08T02:00:19 2025-07-08T02:00:21 Point         Waarne… NA       
+#>  4 41064 2025-07-10T02:00:11 2025-07-22T13:45:18 Point         Waarne… NA       
+#>  5 40612 2025-07-06T02:00:08 2025-07-25T00:13:13 Point         Waarne… NA       
+#>  6 40604 2025-07-06T02:00:08 2025-07-06T02:00:11 Point         Waarne… NA       
+#>  7 41066 2025-07-10T02:00:11 2025-07-22T14:09:04 Point         Waarne… NA       
+#>  8 41061 2025-07-10T02:00:11 2025-07-22T14:13:14 Point         Waarne… NA       
+#>  9 41074 2025-07-10T02:00:14 2025-07-10T02:00:17 Point         Waarne… NA       
+#> 10 41047 2025-07-10T02:00:10 2025-07-10T02:00:11 Point         Waarne… NA       
+#> # ℹ 24 more rows
 #> # ℹ 25 more variables: location$coordinates <list>, nest_height <chr>,
 #> #   nest_size <chr>, nest_location <chr>, nest_type <chr>,
 #> #   observation_datetime <chr>, eradication_date <chr>, municipality <int>,
 #> #   queen_present <lgl>, moth_present <lgl>, province <int>, images <list>,
 #> #   municipality_name <chr>, notes <lgl>, eradication_result <chr>,
-#> #   wn_id <int>, wn_validation_status <chr>, anb <lgl>, visible <lgl>,
-#> #   wn_cluster_id <lgl>, nest_status <chr>, duplicate_nest <lgl>, …
+#> #   wn_id <int>, wn_validation_status <chr>, anb <lgl>, visible <lgl>, …
+```
+
+In this example we fetch data for the first 25 days of July 2025, for
+the municipality of Leuven.
+
+To get an overview of the available parameters that you can use to query
+our observation data, see `get_observation_parameters()`.
+
+``` r
+get_observation_parameters()
+#> # A tibble: 16 × 11
+#>    name       `in`  description required type  format default items$type example
+#>    <chr>      <chr> <chr>       <lgl>    <chr> <chr>    <int> <chr>      <list> 
+#>  1 municipal… query municipali… FALSE    stri… <NA>        NA <NA>       <NULL> 
+#>  2 province_… query province_id FALSE    stri… <NA>        NA <NA>       <NULL> 
+#>  3 min_creat… query min_create… FALSE    stri… <NA>        NA <NA>       <NULL> 
+#>  4 max_creat… query max_create… FALSE    stri… <NA>        NA <NA>       <NULL> 
+#>  5 min_modif… query min_modifi… FALSE    stri… <NA>        NA <NA>       <NULL> 
+#>  6 max_modif… query max_modifi… FALSE    stri… <NA>        NA <NA>       <NULL> 
+#>  7 min_obser… query min_observ… FALSE    stri… <NA>        NA <NA>       <NULL> 
+#>  8 max_obser… query max_observ… FALSE    stri… <NA>        NA <NA>       <NULL> 
+#>  9 anb        query anb         FALSE    stri… <NA>        NA <NA>       <NULL> 
+#> 10 nest_type  query nest_type   FALSE    stri… <NA>        NA <NA>       <NULL> 
+#> 11 visible    query visible     FALSE    stri… <NA>        NA <NA>       <NULL> 
+#> 12 nest_stat… query nest_status FALSE    stri… <NA>        NA <NA>       <NULL> 
+#> 13 ordering   query Which fiel… FALSE    stri… <NA>        NA <NA>       <NULL> 
+#> 14 dist       query Represents… FALSE    numb… float     1000 <NA>       <NULL> 
+#> 15 point      query Point repr… FALSE    array <NA>        NA float      <int>  
+#> 16 cursor     query The pagina… FALSE    stri… <NA>        NA <NA>       <NULL> 
+#> # ℹ 2 more variables: maxItems <int>, minItems <int>
+```
+
+You can also get an overview of the municipality codes, or query a
+municipality code directly with the function `municipalities`:
+
+``` r
+municipalities("Leuven")
+#> [1] 32
+municipalities(c("Hasselt", "Leuven"))
+#> [1] 174  32
+```
+
+``` r
+municipalities()
+#> # A tibble: 285 × 2
+#>    municipality    id
+#>    <chr>        <int>
+#>  1 Aalst          138
+#>  2 Aalter         195
+#>  3 Aarschot        95
+#>  4 Aartselaar       4
+#>  5 Affligem        27
+#>  6 Alken          116
+#>  7 Alveringem     294
+#>  8 Antwerpen      271
+#>  9 Anzegem        126
+#> 10 Ardooie         10
+#> # ℹ 275 more rows
 ```

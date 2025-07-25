@@ -37,6 +37,9 @@ This package was initially written by @PietrH in the context of importing histor
 
 Later on a need arose to query the vespa-db api again, and the original code was moved here for more broad reuse.
 
+## The API
+For an overview of all available API endpoints (certainly more than are wrapped here), see: https://db.vespawatch.be/swagger/.
+
 ## Installation
 
 You can install the development version of vespadbImportR from [GitHub](https://github.com/) with:
@@ -50,7 +53,7 @@ pak::pak("inbo/vespadbImportR")
 
 There are two options to get data out of vespa-db. The fastest way is to fetch the most recent export file. This file is generated every day at around 4AM Brussels time. 
 
-```{r get export}
+```{r get export, }
 library(vespadbImportR)
 get_vespadb_export_s3()
 ```
@@ -59,8 +62,28 @@ Alternativly you can also send queries to the database direclty and get live dat
 
 ```{r database query}
 get_vespadb_obs(
-  municipality_id = 201,
-  min_observation_datetime = "2025-07-01T00:00:00"
+  municipality_id = 32,
+  min_observation_datetime = "2025-07-01T00:00:00",
+  max_observation_datetime = "2025-07-25T00:00:00"
 )
 ```
+In this example we fetch data for the first 25 days of July 2025, for the municipality of Leuven.
+
+To get an overview of the available parameters that you can use to query our observation data, see `get_observation_parameters()`.
+
+```{r show available obs params}
+get_observation_parameters()
+```
+
+You can also get an overview of the municipality codes, or query a municipality code directly with the function `municipalities`:
+
+```{r demo municipalities}
+municipalities("Leuven")
+municipalities(c("Hasselt", "Leuven"))
+```
+```{r demo municipalities overview}
+municipalities()
+```
+
+
 
