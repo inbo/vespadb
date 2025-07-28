@@ -19,3 +19,10 @@ test_that("get_vespadb_export() should not return visible == FALSE records",{
     "visible" %in% colnames(get_vespadb_export(domain = "production"))
   )
 })
+
+test_that("get_vespadb_export() does not return a vroom parsing error",{
+  expect_no_warning(
+    get_vespadb_export(),
+    class = "vroom_parse_issue"
+  )
+})
