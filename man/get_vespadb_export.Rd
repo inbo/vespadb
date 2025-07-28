@@ -26,9 +26,9 @@ or for getting a large amount of data.
 \examples{
 \dontrun{
 # Get the latest export from the VespaDB API
-get_vespadb_export_s3()
+get_vespadb_export()
 # Get the latest export from the VespaDB API in the production instance
-get_vespadb_export_s3(domain = "production")
+get_vespadb_export(domain = "production")
 }
 
 }
