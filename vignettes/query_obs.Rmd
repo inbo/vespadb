@@ -1,0 +1,30 @@
+---
+title: "Querying the live database"
+author: Pieter Huybrechts
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{query_obs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+library(vespadbImportR)
+```
+
+`get_vespadb_obs()` supports a number of query parameters that allow you to get a subset of the observations in the database. 
+
+This is an overview of the parameters that are allowed:
+
+```{r, echo=FALSE}
+knitr::kable(get_observation_parameters())
+```
+
