@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   query_obs: query_obs.html
   vespadb_fields: vespadb_fields.html
-last_built: 2025-07-28T08:04Z
+last_built: 2025-07-28T08:39Z
 urls:
   reference: https://inbo.github.io/vespadbImportR/reference
   article: https://inbo.github.io/vespadbImportR/articles
