@@ -1,4 +1,4 @@
-#' get_vespadb_export_s3
+#' get_vespadb_export
 #'
 #' This function returns all observations from the VespaDB API export.
 #'
@@ -23,7 +23,7 @@
 #'
 #' @export
 
-get_vespadb_export_s3 <- function(domain = c("production", "uat")) {
+get_vespadb_export <- function(domain = c("production", "uat")) {
 
   api_url <- switch(rlang::arg_match(domain),
                     uat = "https://uat-db.vespawatch.be/observations/",
