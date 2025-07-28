@@ -27,8 +27,12 @@ csrftoken needed to fetch information that is not publicly available.
 }
 \examples{
 \dontrun{
-get_vespadb_obs(municipality = 215,
-                          auth = login_vespadb("username",
-                                               "password"))
+get_vespadb_obs(
+  municipality = 215,
+  auth = login_vespadb(
+    "username",
+    "password"
+  )
+)
 }
 }
