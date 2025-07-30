@@ -68,11 +68,7 @@ around 4AM Brussels time.
 ``` r
 library(vespadbImportR)
 get_vespadb_export()
-#> Warning: One or more parsing issues, call `problems()` on your data frame for details,
-#> e.g.:
-#>   dat <- vroom(...)
-#>   problems(dat)
-#> # A tibble: 22,952 × 27
+#> # A tibble: 23,200 × 27
 #>       id observation_datetime latitude longitude province     municipality anb  
 #>    <dbl> <dttm>                  <dbl>     <dbl> <chr>        <chr>        <lgl>
 #>  1 14861 2025-04-11 10:59:00      51.0      3.38 West-Vlaand… Wingene      FALSE
@@ -85,7 +81,7 @@ get_vespadb_export()
 #>  8 14869 2025-04-10 18:53:00      50.9      5.38 Limburg      Hasselt      FALSE
 #>  9 14870 2025-04-10 17:40:00      51.1      4.46 Antwerpen    Kontich      FALSE
 #> 10 14871 2025-04-10 16:07:00      50.9      4.36 Vlaams Brab… Grimbergen   FALSE
-#> # ℹ 22,942 more rows
+#> # ℹ 23,190 more rows
 #> # ℹ 20 more variables: nest_status <chr>, eradication_date <date>,
 #> #   eradication_result <chr>, images <chr>, nest_type <chr>,
 #> #   nest_location <chr>, nest_height <chr>, nest_size <chr>,
@@ -103,20 +99,20 @@ get_vespadb_obs(
   min_observation_datetime = "2025-07-01T00:00:00",
   max_observation_datetime = "2025-07-25T00:00:00"
 )
-#> # A tibble: 37 × 30
+#> # A tibble: 36 × 30
 #>       id created_datetime    modified_datetime   location$type source  source_id
 #>    <int> <chr>               <chr>               <chr>         <chr>   <lgl>    
 #>  1 40399 2025-07-03T04:00:31 2025-07-03T04:00:34 Point         Waarne… NA       
 #>  2 40466 2025-07-04T04:00:05 2025-07-04T04:00:10 Point         Waarne… NA       
 #>  3 40881 2025-07-08T02:00:19 2025-07-08T02:00:21 Point         Waarne… NA       
-#>  4 41064 2025-07-10T02:00:11 2025-07-22T13:45:18 Point         Waarne… NA       
+#>  4 41064 2025-07-10T02:00:11 2025-07-29T11:11:37 Point         Waarne… NA       
 #>  5 40612 2025-07-06T02:00:08 2025-07-25T00:13:13 Point         Waarne… NA       
 #>  6 40604 2025-07-06T02:00:08 2025-07-06T02:00:11 Point         Waarne… NA       
 #>  7 41066 2025-07-10T02:00:11 2025-07-22T14:09:04 Point         Waarne… NA       
 #>  8 41061 2025-07-10T02:00:11 2025-07-22T14:13:14 Point         Waarne… NA       
 #>  9 41074 2025-07-10T02:00:14 2025-07-10T02:00:17 Point         Waarne… NA       
 #> 10 41047 2025-07-10T02:00:10 2025-07-10T02:00:11 Point         Waarne… NA       
-#> # ℹ 27 more rows
+#> # ℹ 26 more rows
 #> # ℹ 25 more variables: location$coordinates <list>, nest_height <chr>,
 #> #   nest_size <chr>, nest_location <chr>, nest_type <chr>,
 #> #   observation_datetime <chr>, eradication_date <chr>, municipality <int>,
