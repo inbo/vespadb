@@ -1,4 +1,4 @@
-Package: vespadbImportR
+Package: vespadb
 Title: Read Data from the vespa-db Database
 Version: 0.1.0.9000
 Authors@R: c(
