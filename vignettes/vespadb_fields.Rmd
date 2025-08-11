@@ -18,6 +18,6 @@ knitr::opts_chunk$set(
 There are more fields in the vespa-db database than are returned by the API. This page provides a complete overview of all fields in the database.
 
 ```{r, echo=FALSE, eval=TRUE}
-knitr::kable(vespadbImportR:::get_field_definitions())
+knitr::kable(vespadb:::get_field_definitions())
 ```
 
