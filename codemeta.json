@@ -81,7 +81,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 4.0.0"
+      "version": ">= 4.1.0"
     },
     "2": {
       "@type": "SoftwareApplication",
@@ -217,9 +217,5 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "42.669KB",
-  "codeRepository": "https://github.com/inbo/vespadbImportR",
-  "readme": "https://github.com/inbo/vespadbImportR/blob/main/README.md",
-  "contIntegration": ["https://github.com/inbo/vespadbImportR/actions/workflows/R-CMD-check.yaml", "https://app.codecov.io/gh/inbo/vespadbImportR"],
-  "developmentStatus": "https://www.repostatus.org/#wip"
+  "fileSize": "42.563KB"
 }
