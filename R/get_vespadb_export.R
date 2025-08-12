@@ -46,6 +46,8 @@ get_vespadb_export <- function(domain = c("production", "uat")) {
     httr2::resp_body_json() |>
     purrr::chuck("download_url") |>
     readr::read_csv(show_col_types = FALSE,
-                    progress = FALSE
-                    )
+                    progress = FALSE,
+                    col_types = readr::cols(
+                      eradication_date = readr::col_character()
+                    ))
 }
