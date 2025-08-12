@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(vespadbImportR)
+library(vespadb)
 
-test_check("vespadbImportR")
+test_check("vespadb")

@@ -13,12 +13,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# vespadbImportR
+# vespadb
 
 <!-- badges: start -->
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) 
-[![R-CMD-check](https://github.com/inbo/vespadbImportR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/inbo/vespadbImportR/actions/workflows/R-CMD-check.yaml) 
-[![Codecov test coverage](https://codecov.io/gh/inbo/vespadbImportR/graph/badge.svg)](https://app.codecov.io/gh/inbo/vespadbImportR)
+[![R-CMD-check](https://github.com/inbo/vespadb/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/inbo/vespadb/actions/workflows/R-CMD-check.yaml) 
+[![Codecov test coverage](https://codecov.io/gh/inbo/vespadb/graph/badge.svg)](https://app.codecov.io/gh/inbo/vespadb)
 <!-- badges: end -->
 
 ## What is vespa-db
@@ -42,11 +42,11 @@ For an overview of all available API endpoints (certainly more than are wrapped 
 
 ## Installation
 
-You can install the development version of vespadbImportR from [GitHub](https://github.com/) with:
+You can install the development version of vespadb from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
-pak::pak("inbo/vespadbImportR")
+pak::pak("inbo/vespadb")
 ```
 
 ## Examples
@@ -54,7 +54,7 @@ pak::pak("inbo/vespadbImportR")
 There are two options to get data out of vespa-db. The fastest way is to fetch the most recent export file. This file is generated every day at around 4AM Brussels time. 
 
 ```{r get export, }
-library(vespadbImportR)
+library(vespadb)
 get_vespadb_export()
 ```
 
@@ -81,6 +81,7 @@ You can also get an overview of the municipality codes, or query a municipality 
 municipalities("Leuven")
 municipalities(c("Hasselt", "Leuven"))
 ```
+
 ```{r demo municipalities overview}
 municipalities()
 ```

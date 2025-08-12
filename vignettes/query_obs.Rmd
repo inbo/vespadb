@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, include=FALSE}
-library(vespadbImportR)
+library(vespadb)
 ```
 
 `get_vespadb_obs()` supports a number of query parameters that allow you to get a subset of the observations in the database. 
