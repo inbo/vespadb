@@ -42,7 +42,7 @@ For an overview of all available API endpoints (certainly more than are wrapped 
 
 ## Installation
 
-You can install the development version of vespadbImportR from [GitHub](https://github.com/) with:
+You can install the development version of vespadb from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
