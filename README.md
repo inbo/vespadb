@@ -1,3 +1,8 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -5,12 +10,14 @@
 
 <!-- badges: start -->
 
-[![Project Status: WIP - Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Abandoned - Initial development has started, but
+there has not yet been a stable, usable release; the project has been
+abandoned and the author(s) do not intend on continuing
+development.](https://www.repostatus.org/badges/latest/abandoned.svg)](https://www.repostatus.org/#abandoned)
 [![R-CMD-check](https://github.com/inbo/vespadb/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/inbo/vespadb/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/inbo/vespadb/graph/badge.svg)](https://app.codecov.io/gh/inbo/vespadb)
+
 <!-- badges: end -->
 
 ## What is vespa-db
@@ -21,17 +28,17 @@ vespa-db is a database created by
 
 The platform contains observations from different sources, but currently
 only new observations are added from
-\[waarnemingen.be)\[<https://waarnemingen.be/>\]. In order for an
+$$waarnemingen.be)\[<https://waarnemingen.be/>$$. In order for an
 observation to be included in vespa-db, it needs to have the following
 properties:
 
-- It has to currently be **identified** to *Vespa velutina* or a
-  subspiecies thereof.
-- It has to have the activity: **Nest** (no observations of individuals
-  are included)
-- It has to be **validated** by a validator, which means it has to have
-  a photo. Automatically validated (based on location and likelyhood)
-  observations are not included.
+-   It has to currently be **identified** to *Vespa velutina* or a
+    subspiecies thereof.
+-   It has to have the activity: **Nest** (no observations of
+    individuals are included)
+-   It has to be **validated** by a validator, which means it has to
+    have a photo. Automatically validated (based on location and
+    likelyhood) observations are not included.
 
 ## How did this package come to be
 
